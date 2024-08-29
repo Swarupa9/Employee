@@ -22,5 +22,4 @@ public class EmployeeItemWriterCsv implements ItemWriter<EmpEO> {
     public void write(Chunk<? extends EmpEO> item) throws Exception {
         employeeRepository.saveAll(item.getItems());
     }
-    //public void write(Chunk<? extends EmpEO> employees) throws Exception {
 }

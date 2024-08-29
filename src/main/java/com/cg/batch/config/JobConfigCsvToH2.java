@@ -18,33 +18,33 @@ import com.cg.batch.JobCompletionListener;
 import com.cg.EO.EmpEO;
 
 @Configuration
-//@EnableBatchProcessing
+
 public class JobConfigCsvToH2 {
 
-    @Bean
-    @Qualifier("csvToH2Job")
-    public Job csvToH2Job(JobRepository jobRepository,
-    		@Qualifier("csvToH2Step") Step csvToH2Step,
-                                JobCompletionListener listener) {
-        return new JobBuilder("csvToH2Job", jobRepository)
-                .listener(listener)
-                .start(csvToH2Step)
-                .build();
-    }
-    
-    @Bean
-    @Qualifier("csvToH2Step")
-    public Step csvToH2Step(JobRepository jobRepository,
-                                  PlatformTransactionManager transactionManager,
-                                  EmployeeItemReaderCsv reader,
-                                  EmployeeItemProcessor processor,
-                                  EmployeeItemWriterCsv writer) {
-        return new StepBuilder("csvToH2Step", jobRepository)
-                .<EmpEO, EmpEO>chunk(5, transactionManager)
-                .reader(reader)
-                .processor(processor)
-                .writer(writer)
-                .build();
-    }
+	@Bean
+	@Qualifier("csvToH2Job")
+	public Job csvToH2Job(JobRepository jobRepository,
+			@Qualifier("csvToH2Step") Step csvToH2Step,
+			JobCompletionListener listener) {
+		return new JobBuilder("csvToH2Job", jobRepository)
+				.listener(listener)
+				.start(csvToH2Step)
+				.build();
+	}
+
+	@Bean
+	@Qualifier("csvToH2Step")
+	public Step csvToH2Step(JobRepository jobRepository,
+			PlatformTransactionManager transactionManager,
+			EmployeeItemReaderCsv reader,
+			EmployeeItemProcessor processor,
+			EmployeeItemWriterCsv writer) {
+		return new StepBuilder("csvToH2Step", jobRepository)
+				.<EmpEO, EmpEO>chunk(5, transactionManager)
+				.reader(reader)
+				.processor(processor)
+				.writer(writer)
+				.build();
+	}
 
 }

@@ -92,40 +92,4 @@ public class EmployeeItemReaderCsv implements ItemReader<EmpEO> {
         return null;
     }
 }
-//@Component
-//public class EmployeeItemReaderCsv {
-//
-//    //@Value("classpath:src/main/resources/employeesH2ToCsv.csv") // Path to CSV file in resources
-//    private String inputFile;
-//
-//    public FlatFileItemReader<EmpEO> reader() {
-//        return new FlatFileItemReaderBuilder<EmpEO>()
-//                .name("csvEmployeeItemReader")
-//                .resource(new ClassPathResource("src/main/resources/employeesH2ToCsv.csv")) // Ensure this file is in src/main/resources
-//                .delimited()
-//                .names("ID", "Name", "Email", "Age") // Ensure these match your CSV header names
-//                .fieldSetMapper(new BeanWrapperFieldSetMapper<EmpEO>() {{
-//                    setTargetType(EmpEO.class);
-//                }})
-//                .build();
-//    }
-//    
-// .names("id", "emp_Name", "emp_EmailId", "emp_Age")
-    
-//    public FlatFileItemReader<EmpEO> reader() {
-//        LineMapper<EmpEO> lineMapper = new DefaultLineMapper<EmpEO>() {{
-//            setLineTokenizer(new DelimitedLineTokenizer() {{
-//                setNames("id", "emp_Name", "emp_EmailId", "emp_Age");
-//            }});
-//            setFieldSetMapper(new BeanWrapperFieldSetMapper<EmpEO>() {{
-//                setTargetType(EmpEO.class);
-//            }});
-//        }};
-//        
-//        return new FlatFileItemReaderBuilder<EmpEO>()
-//                .name("employeeItemReader")
-//                .resource(new ClassPathResource(inputFile))
-//                .lineMapper(lineMapper)
-//                .build();
-//    }
 

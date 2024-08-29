@@ -14,6 +14,6 @@ public interface EmpMap {
 	
 	EmpMap INSTANCE = Mappers.getMapper(EmpMap.class);
 
-	EmpBO employee_BO(EmpEO empEO);
-	EmpEO employee_EO(EmpBO empBO);
+	EmpBO employee_BO(EmpEO empEO);  // Method to map from EmpEO (Entity Object) to EmpBO (Business Object)
+	EmpEO employee_EO(EmpBO empBO);  // Method to map from EmpBO (Business Object) to EmpEO (Entity Object)
 }

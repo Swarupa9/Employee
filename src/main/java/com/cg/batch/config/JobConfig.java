@@ -18,7 +18,7 @@ import com.cg.batch.EmployeeItemWriter;
 import com.cg.batch.JobCompletionListener;
 
 @Configuration
-//@EnableBatchProcessing
+
 public class JobConfig {
 
     @Bean

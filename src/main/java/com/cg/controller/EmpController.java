@@ -89,31 +89,5 @@ public class EmpController {
 		EmpBO createdEmployee = empService.createEmployee(empBO);
 		return ResponseEntity.status(HttpStatus.CREATED).body(createdEmployee);
 	}
-	
-	
-	 @GetMapping("/convertToXml/{id}")
-	    public ResponseEntity<String> convertEmployeeToXml(@PathVariable("id") Long id) {
-	        try {
-	            EmpBO empBO = empService.getEmployeeById(id);
-	            if (empBO != null) {
-	                String empXml = empService.convertEmpBOToXml(empBO);
-	                return ResponseEntity.ok(empXml);
-	            } else {
-	                return ResponseEntity.notFound().build();
-	            }
-	        } catch (JAXBException e) {
-	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error converting to XML: " + e.getMessage());
-	        }
-	    }
-	 
-	 @GetMapping("/convertToJson/{id}")
-	    public ResponseEntity<EmpBO> convertEmployeeToJson(@PathVariable("id") Long id) {
-	        EmpBO empBO = empService.getEmployeeById(id);
-	        if (empBO != null) {
-	            return ResponseEntity.ok(empBO);
-	        } else {
-	            return ResponseEntity.notFound().build();
-	        }
-	 }
-	 	
+		
 }

@@ -13,7 +13,7 @@ import lombok.Data;
 @NoArgsConstructor
 @XmlRootElement
 public class EmpBO implements Serializable {
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 	
 	private long id;
 	private String emp_Name;
